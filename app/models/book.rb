@@ -2,12 +2,10 @@
 
 # Validate for title and date
 class Book < ApplicationRecord
-  validates :title, presence: true
-  validates :publish_date, presence: true
-
-  has_one_attached :avatar
+  validates :title, :publish_date, presence: true
+  has_one_attached :book_cover
 
   def book_image(size)
-    avatar.variant(resize_to_limit: [size, size]).processed
+    book_cover.variant(resize_to_limit: [size, size]).processed
   end
 end

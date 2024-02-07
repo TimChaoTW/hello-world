@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <p>
   <strong>Picture</strong>
-  <% if @book.avatar.attached?%>
+  <% if @book.book_cover.attached?%>
     <%= link_to image_tag(@book.book_image(500))%>
   <% else %>
     <i class="fa-solid fa-book fa-2xl"></i>

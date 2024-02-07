@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# bookcontroller
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
 
@@ -45,6 +46,6 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:title, :content, :publish_date, :avatar)
+    params.require(:book).permit(:title, :content, :publish_date, :book_cover)
   end
 end

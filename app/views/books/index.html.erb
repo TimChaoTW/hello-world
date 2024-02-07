@@ -1,4 +1,4 @@
-<td id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
 <h1>Books</h1>
 
@@ -23,7 +23,7 @@
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td>
-          <% if book.avatar.attached?%>
+          <% if book.book_cover.attached?%>
             <%= link_to image_tag(book.book_image(50))%>
           <% else %>
             <i class="fa-solid fa-book fa-2xl"></i>
