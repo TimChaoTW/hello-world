@@ -18,6 +18,10 @@ class Book < ApplicationRecord
       unless valid_isbn_10?(isbn)
         errors.add(:isbn, 'is not a valid ISBN')
       end
+    elsif isbn.length == 13
+      unless valid_isbn_13?(isbn)
+        errors.add(:isbn, 'is not a valid ISBN')
+      end
     else
       errors.add(:isbn, 'ISBN must 10 or 13 characters long')
     end
@@ -28,5 +32,12 @@ class Book < ApplicationRecord
     checksum = sum % 11
     checksum = 11 - checksum if checksum != 0
     checksum == isbn[-1].to_i || (checksum == 10 && isbn[-1].upcase == 'X')
+  end
+
+  def valid_isbn_13?(isbn)
+    sum = isbn.chars[0..11].map.with_index { |num, index| num.to_i * (index.even? ? 1 : 3) }.sum
+    checksum = sum % 10
+    checksum = 10 - checksum if checksum != 0
+    checksum == isbn[-1].to_i
   end
 end
