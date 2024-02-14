@@ -1,31 +1,39 @@
 <p id="notice"><%= notice %></p>
-<p>
-  <strong>Picture</strong>
-  <% if @book.book_cover.attached?%>
-    <%= link_to image_tag(@book.book_image(500))%>
-  <% else %>
-    <i class="fa-solid fa-book fa-2xl"></i>
-  <% end %>
-</p>
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
+<div class="show-contain">
+  
+  <ul class="show-field">
+    <li>
+      <strong>Title:</strong>
+      <%= @book.title %>
+  </li>
 
-<p>
-  <strong>Content:</strong>
-  <%= @book.content %>
-</p>
+    <li>
+      <strong>Content:</strong>
+      <%= @book.content %>
+    </li>
 
-<p>
-  <strong>Publish date:</strong>
-  <%= @book.publish_date %>
-</p>
+    <li>
+      <strong>Publish date:</strong>
+      <%= @book.publish_date %>
+    </li>
 
-<p>
-  <strong>ISBN:</strong>
-  <%= @book.isbn %>
-</p>
+    <li>
+      <strong>ISBN:</strong>
+      <%= @book.isbn %>
+    </li>
+  </ul>
 
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+  <div class="show-pic">
+    <% if @book.book_cover.attached?%>
+      <%= link_to image_tag(@book.book_image(800))%>
+    <% else %>
+      <i class="fa-solid fa-book fa-2xl"></i>
+      <% end %>
+  </div>
+</div>
+
+<div class="buttons">
+<%= button_to 'Edit', edit_book_path(@book), method: :get, class: "button", form: {class: "inline"} %>
+<%= button_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' }, class: "button", form: {class: "inline"} %>
+<%= button_to 'Back', books_path, method: :get, class: "button", form: {class: "inline"} %>
+</div>
