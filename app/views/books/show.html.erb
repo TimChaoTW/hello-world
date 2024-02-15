@@ -27,8 +27,8 @@
     <% if @book.book_cover.attached?%>
       <%= link_to image_tag(@book.book_image(800))%>
     <% else %>
-      <i class="fa-solid fa-book fa-2xl"></i>
-      <% end %>
+      <%= image_tag 'default-image.jpg' %>
+    <% end %>
   </div>
 </div>
 
