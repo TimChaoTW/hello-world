@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'pages#home'
+  root 'books#index'
   resources :books
 end
